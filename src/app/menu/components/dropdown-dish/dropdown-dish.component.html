@@ -1,0 +1,34 @@
+<div class="container mt-3 mb-5">
+    <form>
+        <div class="form-group">
+          <label for="buscarPlato">{{ dishType.name }}</label>
+          <p-dropdown 
+            [options]="dishes"
+            [(ngModel)]="selectedDish" 
+            optionLabel="name"
+            name="dish"
+            [showClear]="true"
+            [filter]="true"
+            filterBy="name"
+            (onChange)="addDish()"
+            placeholder="Seleccione un Plato">
+
+            <ng-template pTemplate="selectedItem" let-selectedOption>
+              <div class="flex align-items-center gap-2">
+                  <div>{{ selectedOption.name }}</div>
+              </div>
+          </ng-template>
+          </p-dropdown>
+        </div>
+        
+        <div class="form-group">
+          <ul class="list-group">
+            <li *ngFor="let dish of selectedDishes" class="list-group-item">
+              - {{ dish.name }}
+              <button class="btn btn-danger btn-sm float-right" (click)="deleteDish(dish)">Eliminar</button>
+            </li>
+          </ul>
+        </div>
+    </form>
+  </div>
+  

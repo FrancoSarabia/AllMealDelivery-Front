@@ -1,0 +1,26 @@
+
+<div class="p-fluid">
+    <h2>Crear Menú</h2>
+  
+    <div class="p-field">
+      <label for="name">Nombre del Menú</label>
+      <input id="name" type="text" pInputText [(ngModel)]="menu.name" />
+    </div>
+  
+    <div class="p-field">
+      <label for="description">Descripción</label>
+      <textarea id="description" pInputTextarea [(ngModel)]="menu.description"></textarea>
+    </div>
+  
+    <h3>Agregar Platos</h3>
+    <div *ngFor="let dish of menuDishes; let i = index" class="d-flex justify-content-between">
+      <div *ngFor="let dishType of dichTypes">
+        <app-dropdown-dish [dishType]="dishType"></app-dropdown-dish>
+      </div>
+    </div>
+  
+    <div class="p-mt-3">
+      <button pButton type="button" label="Crear Menú" icon="pi pi-check" (click)="submitMenu()"></button>
+    </div>
+  </div>
+  
